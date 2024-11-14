@@ -3,54 +3,51 @@ import java.util.Scanner;
 public class Jogo {
 
     private int rodadas;
+    private char controleJogo;
     private Jogador player1;
     private Jogador player2;
 
 // CONSTRUTOR 
     public Jogo() {
-
+        this.rodadas = 0;
+        this.controleJogo = 's';
     }
 
 // MÉTODOS DA CLASSE
 // Executa o jogo completo
     public void rodaJogo() {
-        char controleJogo = 's';
-
         while(controleJogo == 's' || controleJogo == 'S') {
-            int rodadas = 0;
-        Scanner scan = new Scanner(System.in);
-
-        while(rodadas != 3 && rodadas != 5) {
-            System.out.println("Você quer melhor de 3 ou melhor de 5? Insira apenas o número: ");
-            rodadas = scan.nextInt();
+            defineNumRodadas();
+            definePlayers();
+            fazRodadas();
+            encerraJogo();
+            controleJogo = jogarNovamente();
         }
-        setRodadas(rodadas);
-        definePlayers();
-
-        for(int i = 0; i < rodadas; i++) {
-            fazUmaRodada();
-        }
-
-        encerraJogo();
-        controleJogo = jogarNovamente();
-        }
-        
     }
 
 // Retorna o nome do jogador que foi digitado na tela
-    public String defineNome() {
+    private String defineNome() {
         Scanner scan = new Scanner(System.in);
-        String nome = scan.nextLine();
-        return nome;
+        return scan.nextLine();
     }
 
 // Cria uma instância dos jogadores (player1 e player2)
-    public void definePlayers() {
-        
+    private void definePlayers() {
+
         System.out.println("Digite o nome do jogador 1: ");
         this.player1 = new Jogador(defineNome());
         System.out.println("Digite o nome do jogador 2: ");
         this.player2 = new Jogador(defineNome());
+    }
+
+// Define quantas rodadas serão jogadas
+    private void defineNumRodadas() {
+        Scanner scan = new Scanner(System.in);
+
+        while (rodadas != 3 && rodadas != 5) {
+            System.out.println("Você quer melhor de 3 ou melhor de 5? Insira apenas o número: ");
+            rodadas = scan.nextInt();
+        }
     }
 
 // Faz uma rodada do jogo
@@ -61,6 +58,13 @@ public class Jogo {
       player2.fazJogada();
 
       defineVencRodada();
+    }
+
+// Loop com o número de rodadas definidas
+    private void fazRodadas() {
+        for(int i = 0; i < rodadas; i++) {
+            fazUmaRodada();
+        }
     }
 
 // Printa na tela quem venceu a rodada
@@ -111,8 +115,8 @@ public class Jogo {
     private char jogarNovamente() {
         Scanner scan = new Scanner(System.in);
         System.out.println("Gostaria de jogar novamente? S para sim e N para não: ");
-        char resposta = scan.next().charAt(0);
-        return resposta;
+        controleJogo = scan.next().charAt(0);
+        return controleJogo;
     }
 
     // GETTERS E SETTERS
@@ -121,16 +125,20 @@ public class Jogo {
         this.rodadas = rodadas;
     }
 
+    public void setControleJogo(char controleJogo) { this.controleJogo = controleJogo; }
+
     public int getRodadas() {
-        return this.rodadas;
+        return rodadas;
     }
 
+    public char getControleJogo() { return controleJogo; }
+
     public Jogador getPlayer1() {
-        return this.player1;
+        return player1;
     }
 
     public Jogador getPlayer2() {
-        return this.player2;
+        return player2;
     }
 
 }

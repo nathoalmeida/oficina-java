@@ -17,8 +17,7 @@ public class Jogador {
 // MÉTODOS DA CLASSE
     public void fazJogada() {
         Scanner scan = new Scanner(System.in);
-        int jogada = scan.nextInt();
-        this.jogada = jogada;
+        jogada = scan.nextInt();
     }
 
 // GETTERS E SETTERS
