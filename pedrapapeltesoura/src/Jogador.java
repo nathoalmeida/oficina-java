@@ -16,6 +16,9 @@ public class Jogador {
 
 // MÉTODOS DA CLASSE
     public void fazJogada() {
+        /* ATIVIDADE 1: Trate essa função para identificar
+        *  quando o usuário inserir um número incompatível
+        *  (diferente de 0,1 ou 2 */
         Scanner scan = new Scanner(System.in);
         jogada = scan.nextInt();
     }

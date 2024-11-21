@@ -21,4 +21,5 @@ public class Main {
             Dica: algumas IDE's já sugerem a função; se não conseguir, pesquise sobre Arrays.stream()
         */ 
     }
+
 }
