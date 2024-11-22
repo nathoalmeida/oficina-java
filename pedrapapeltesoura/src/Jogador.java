@@ -20,7 +20,13 @@ public class Jogador {
         *  quando o usuário inserir um número incompatível
         *  (diferente de 0,1 ou 2 */
         Scanner scan = new Scanner(System.in);
+
         jogada = scan.nextInt();
+
+        while (jogada != 0 && jogada != 1 && jogada != 2) { //verifica se a jogada é diferente de 0,1,2
+            System.out.println("Digito errado, digite [0,1,2]"); 
+            jogada = scan.nextInt();
+        }
     }
 
 // GETTERS E SETTERS
