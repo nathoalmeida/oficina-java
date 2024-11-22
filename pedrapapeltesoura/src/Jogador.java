@@ -2,28 +2,37 @@ import java.util.Scanner;
 
 public class Jogador {
 
-// ATRIBUTOS
+    // ATRIBUTOS
     private String nome;
     private int jogada;
     private int pontos;
 
-
-// CONSTRUTOR
+    // CONSTRUTOR
     public Jogador(String nome) {
         this.nome = nome;
         this.pontos = 0;
     }
 
-// MÃ‰TODOS DA CLASSE
+    // MÉTODOS DA CLASSE
     public void fazJogada() {
-        /* ATIVIDADE 1: Trate essa funÃ§Ã£o para identificar
-        *  quando o usuÃ¡rio inserir um nÃºmero incompatÃ­vel
-        *  (diferente de 0,1 ou 2 */
         Scanner scan = new Scanner(System.in);
-        jogada = scan.nextInt();
+        System.out.println(nome + ", insira sua jogada (0 - Pedra, 1 - Papel, 2 - Tesoura):");
+        while (true) {
+            try {
+                jogada = scan.nextInt(); // Lê o próximo inteiro
+                if (jogada >= 0 && jogada <= 2) {
+                    break; // Sai do loop se a entrada for válida
+                } else {
+                    System.out.println("Entrada inválida. Digite 0, 1 ou 2.");
+                }
+            } catch (Exception e) {
+                System.out.println("Entrada inválida. Digite apenas números.");
+                scan.next(); // Limpa o buffer de entrada
+            }
+        }
     }
 
-// GETTERS E SETTERS
+    // GETTERS E SETTERS
     public String getNome() {
         return this.nome;
     }
@@ -47,5 +56,4 @@ public class Jogador {
     public void setPontos(int pontos) {
         this.pontos = pontos;
     }
-
 }
