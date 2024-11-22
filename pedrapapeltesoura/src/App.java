@@ -4,7 +4,7 @@ public class App {
     Jogo jogo = new Jogo();
 
     jogo.rodaJogo();
-
+    
     }
 
 }
